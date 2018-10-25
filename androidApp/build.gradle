@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.multiplatform'
 }
 
+apply plugin: 'kotlinx-serialization'
+
 android {
     compileSdkVersion 27
     defaultConfig {

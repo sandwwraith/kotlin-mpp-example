@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import android.widget.TextView
+import org.greeting.CommonFactory
 import org.greeting.Factory
 import kotlin.properties.Delegates
 
@@ -25,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         rootLayout = findViewById(R.id.main_view) as LinearLayout
         rootLayout.removeAllViews()
 
-        val product = Factory.create(mapOf("user" to "JetBrains"))
+        val model = CommonFactory.deserialize("""{"name": "Android", "version": 1}""")
         val tv = TextView(this)
-        tv.text = product.toString()
+        tv.text = model.toString()
         rootLayout.addView(tv)
     }
 }

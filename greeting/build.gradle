@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.multiplatform'
 }
 
+apply plugin: 'kotlinx-serialization'
+
 group = 'org.greeting'
 version = 1.0
 
@@ -22,6 +24,8 @@ android {
 dependencies {
     // Specify Kotlin/JVM stdlib dependency.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7'
+
+    compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.0"
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
@@ -50,12 +54,18 @@ kotlin {
         commonMain {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.9.0"
             }
         }
         commonTest {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-test-common'
                 implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
+            }
+        }
+        iosMain {
+            dependencies {
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.9.0"
             }
         }
     }

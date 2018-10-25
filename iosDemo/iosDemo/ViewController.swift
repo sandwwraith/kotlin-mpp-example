@@ -13,8 +13,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let product = Factory().create(config: ["user": "JetBrains"])
-        label.text = product.description
+        let model = CommonFactory().deserialize(string: """
+{"name": "iOS", "version": 1}
+""")
+        label.text = model.description
         // Do any additional setup after loading the view, typically from a nib.
     }
 
